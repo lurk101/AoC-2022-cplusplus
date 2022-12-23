@@ -69,6 +69,10 @@ int main(int ac, char** av) {
             paths.push_back(p.substr(2));
     }
     paths.sort();
+    cout << "Runnung:";
+    for (auto& p : paths)
+        cout << ' ' << p;
+    cout << endl;
     for (auto& p : paths)
         run_test(p);
     ofstream o(av[1]);
