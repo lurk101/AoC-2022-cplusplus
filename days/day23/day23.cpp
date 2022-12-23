@@ -21,14 +21,14 @@ struct point {
     point operator+(const point& r) const { return {x + r.x, y + r.y}; }
 };
 
-struct hash_fn {
-    size_t operator()(const point& p) const { return p.x * p.y; }
+struct cantor_hash_fn {
+    size_t operator()(const point& p) const { return (p.x + p.y) * (p.x + p.y + 1) / 2 + p.x; }
 };
 
 const point N({0, -1}), S({0, 1}), E({1, 0}), W({-1, 0}), NE(N + E), NW(N + W), SE(S + E),
     SW(S + W);
 
-unordered_set<point, hash_fn> elves;
+unordered_set<point, cantor_hash_fn> elves;
 int dir_ix;
 
 point propose(const point& elf) {
@@ -69,8 +69,8 @@ point propose(const point& elf) {
 };
 
 bool mov() {
-    unordered_map<point, point, hash_fn> proposed;
-    unordered_map<point, int, hash_fn> to_counts;
+    unordered_map<point, point, cantor_hash_fn> proposed;
+    unordered_map<point, int, cantor_hash_fn> to_counts;
     for (auto& elf : elves) {
         auto proposed_move = propose(elf);
         proposed[elf] = proposed_move;
@@ -79,7 +79,7 @@ bool mov() {
         else
             to_counts[proposed_move] = 1;
     }
-    unordered_set<point, hash_fn> new_elves;
+    unordered_set<point, cantor_hash_fn> new_elves;
     bool elves_moved = false;
     for (auto& e : elves) {
         auto& proposed_move = proposed[e];
