@@ -34,3 +34,4 @@
 | Day 20: Grove Positioning System    | 368.592 ms. | 686.101 ms. | 677.441 ms. | 827.708 ms. |
 | Day 21: Monkey Math                 | 5.388 ms.   | 10.421 ms.  | 10.36 ms.   | 12.609 ms.  |
 | Day 22: Monkey Map                  | 5.955 ms.   | 9.938 ms.   | 9.286 ms.   | 11.513 ms.  |
+| Day 23: Unstable Diffusion          | 1933.35 ms. | 3843.43 ms. | 4042.88 ms. | 5371.39 ms. |
