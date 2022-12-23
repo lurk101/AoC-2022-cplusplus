@@ -12,26 +12,26 @@
 
 | Day - Title | rock-5b | pi4b | rock-4se | jetson nano |
 | --- | --- | --- | --- | --- |
-| Day 1: Calorie Counting             | 0.309 ms.   | 0.435 ms.   | 0.464 ms.   | 0.438 ms.   |
-| Day 2: Rock Paper Scisors           | 0.552 ms.   | 0.88 ms.    | 0.83 ms.    | 1.08 ms.    |
-| Day 3: Rucksack Reorganization      | 0.261 ms.   | 0.312 ms.   | 0.372 ms.   | 0.333 ms.   |
-| Day 4: Camp Cleanup                 | 0.544 ms.   | 0.866 ms.   | 0.897 ms.   | 1.0 ms.     |
-| Day 5: Supply Stacks                | 0.455 ms.   | 0.761 ms.   | 0.849 ms.   | 0.93 ms.    |
-| Day 6: Tuning Trouble               | 0.323 ms.   | 0.401 ms.   | 0.463 ms.   | 0.463 ms.   |
-| Day 7: No Space Left On Device      | 0.375 ms.   | 0.51 ms.    | 0.533 ms.   | 0.52 ms.    |
-| Day 8: Treetop Tree House           | 0.778 ms.   | 1.225 ms.   | 1.305 ms.   | 1.629 ms.   |
-| Day 9: Rope Bridge                  | 3.483 ms.   | 5.635 ms.   | 5.549 ms.   | 7.641 ms.   |
-| Day 10: Cathode-Ray Tube            | 0.229 ms.   | 0.23 ms.    | 0.314 ms.   | 0.211 ms.   |
-| Day 11: Monkey in the Middle        | 36.738 ms.  | 55.339 ms.  | 61.389 ms.  | 78.153 ms.  |
-| Day 12: Hill Climbing Algorithm     | 35.489 ms.  | 65.098 ms.  | 66.766 ms.  | 82.899 ms.  |
-| Day 13: Distress Signal             | 6.897 ms.   | 13.004 ms.  | 11.874 ms.  | 13.278 ms.  |
-| Day 14: Regolith Reservoir          | 380.329 ms. | 1091.58 ms. | 1048.55 ms. | 1601.42 ms. |
-| Day 15: Beacon Exclusion Zone       | 801.112 ms. | 1507.05 ms. | 1830.17 ms. | 2153.38 ms. |
-| Day 16: Proboscidea Volcanium       | 2953.65 ms. | 4174.57 ms. | 4236.22 ms. | 4017.29 ms. |
-| Day 17: Pyroclastic Flow            | 123.51 ms.  | 250.337 ms. | 268.667 ms. | 330.211 ms. |
-| Day 18: Boiling Boulders            | 13.949 ms.  | 25.851  ms. | 25.128 ms.  | 35.287 ms.  |
-| Day 19: Not Enough Minerals         | 3866.72 ms. | 8678.45 ms. | 8817.36 ms. | 11595.2 ms. |
-| Day 20: Grove Positioning System    | 368.592 ms. | 686.101 ms. | 677.441 ms. | 827.708 ms. |
-| Day 21: Monkey Math                 | 5.388 ms.   | 10.421 ms.  | 10.36 ms.   | 12.609 ms.  |
-| Day 22: Monkey Map                  | 5.955 ms.   | 9.938 ms.   | 9.286 ms.   | 11.513 ms.  |
-| Day 23: Unstable Diffusion          | 1933.35 ms. | 3843.43 ms. | 4042.88 ms. | 5371.39 ms. |
+| Day 1: Calorie Counting             | 0.32 ms.    | 0.42 ms.    | 0.469 ms.   | 0.443 ms.   |
+| Day 2: Rock Paper Scisors           | 0.557 ms.   | 0.881 ms.   | 0.83 ms.    | 1.16 ms.    |
+| Day 3: Rucksack Reorganization      | 0.267 ms.   | 0.317 ms.   | 0.37 ms.    | 0.339 ms.   |
+| Day 4: Camp Cleanup                 | 0.553 ms.   | 0.853 ms.   | 0.895 ms.   | 1.001 ms.   |
+| Day 5: Supply Stacks                | 0.463 ms.   | 0.789 ms.   | 0.84 ms.    | 0.94 ms.    |
+| Day 6: Tuning Trouble               | 0.326 ms.   | 0.405 ms.   | 0.459 ms.   | 0.463 ms.   |
+| Day 7: No Space Left On Device      | 0.382 ms.   | 0.526 ms.   | 0.528 ms.   | 0.525 ms.   |
+| Day 8: Treetop Tree House           | 0.78 ms.    | 1.313 ms.   | 1.302 ms.   | 1.647 ms.   |
+| Day 9: Rope Bridge                  | 3.482 ms.   | 5.834 ms.   | 5.554 ms.   | 7.701 ms.   |
+| Day 10: Cathode-Ray Tube            | 0.237 ms.   | 0.432 ms.   | 0.313 ms.   | 0.209 ms.   |
+| Day 11: Monkey in the Middle        | 36.672 ms.  | 57.789 ms.  | 61.534 ms.  | 78.21 ms.   |
+| Day 12: Hill Climbing Algorithm     | 35.4 ms.    | 65.563 ms.  | 66.773 ms.  | 82.849 ms.  |
+| Day 13: Distress Signal             | 6.953 ms.   | 13.338 ms.  | 11.95 ms.   | 13.285 ms.  |
+| Day 14: Regolith Reservoir          | 379.633 ms. | 1096.14 ms. | 1048.25 ms. | 1609.74 ms. |
+| Day 15: Beacon Exclusion Zone       | 804.528 ms. | 1509.13 ms. | 1797.53 ms. | 2153.27 ms. |
+| Day 16: Proboscidea Volcanium       | 2709.24 ms. | 4271.71 ms. | 4232.9 ms.  | 4050.52 ms. |
+| Day 17: Pyroclastic Flow            | 124.002 ms. | 246.848 ms. | 268.89 ms.  | 335.496 ms. |
+| Day 18: Boiling Boulders            | 13.705 ms.  | 25.041  ms. | 25.083 ms.  | 34.401 ms.  |
+| Day 19: Not Enough Minerals         | 3898.7 ms.  | 8678.36 ms. | 8860.22 ms. | 11592.1 ms. |
+| Day 20: Grove Positioning System    | 371.212 ms. | 686.647 ms. | 676.249 ms. | 822.908 ms. |
+| Day 21: Monkey Math                 | 5.388 ms.   | 10.341 ms.  | 10.332 ms.  | 12.879 ms.  |
+| Day 22: Monkey Map                  | 5.227 ms.   | 8.91 ms.    | 9.517 ms.   | 10.546 ms.  |
+| Day 23: Unstable Diffusion          | 1542.43 ms. | 3009.03 ms. | 3219.14 ms. | 4179.72 ms. |
