@@ -26,7 +26,7 @@ struct point {
     }
 };
 
-const point delta[6] = {{1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}};
+const point adjacent[] = {{1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}};
 
 int main() {
     auto strt = high_resolution_clock::now();
@@ -38,21 +38,21 @@ int main() {
         (void)sscanf(line.c_str(), "%d,%d,%d", &x, &y, &z);
         cubes.insert({int8_t(x), int8_t(y), int8_t(z)});
     }
-    set<point> water, neighbors;
-    neighbors.insert({0, 0, 0});
-    while (!neighbors.empty()) {
+    set<point> water, adjacents;
+    adjacents.insert({0, 0, 0});
+    while (!adjacents.empty()) {
         set<point> next;
-        for (const auto& n : neighbors)
-            if (n.inside() && !water.count(n) && !cubes.count(n)) {
-                water.insert(n);
-                for (const auto& d : delta)
-                    next.insert(n + d);
+        for (const auto& a : adjacents)
+            if (a.inside() && !water.count(a) && !cubes.count(a)) {
+                water.insert(a);
+                for (const auto& d : adjacent)
+                    next.insert(a + d);
             }
-        neighbors = next;
+        adjacents = next;
     }
     int part1 = 0, part2 = 0;
     for (const auto& c : cubes) {
-        for (const auto& d : delta) {
+        for (const auto& d : adjacent) {
             if (!cubes.count(c + d))
                 ++part1;
             if (water.count(c + d))

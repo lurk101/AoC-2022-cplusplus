@@ -27,7 +27,7 @@ int main() {
             c = 0;
             continue;
         }
-        c += strtol(line.c_str(), NULL, 10);
+        c += stol(line);
     }
     cout << title << endl
          << "Part 1 - " << c1 << endl

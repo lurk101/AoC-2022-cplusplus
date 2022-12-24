@@ -18,6 +18,8 @@ int part1(string& line) {
     return 0;
 }
 
+string l1, l2, l3;
+
 int part2(string& l1, string& l2, string& l3) {
     char count1[53] = {0}, count2[53] = {0}, count3[53] = {0};
     for (auto c : l1)
@@ -35,7 +37,6 @@ int part2(string& l1, string& l2, string& l3) {
 int main() {
     auto start = high_resolution_clock::now();
     ifstream f("day03.txt");
-    string l1, l2, l3;
     int prio = 0, badges = 0;
     while (getline(f, l1)) {
         getline(f, l2);

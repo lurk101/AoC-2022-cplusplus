@@ -16,13 +16,13 @@ struct monkey {
     string operand[2];
 };
 
-map<string, int64_t> numbers;
+map<string, int64_t> values;
 map<string, monkey> monkeys;
 map<string, string> parents;
 
 int64_t evaluate(const string& name) {
-    if (numbers.count(name))
-        return numbers[name];
+    if (values.count(name))
+        return values[name];
     else {
         auto mky = monkeys[name];
         switch (mky.op) {
@@ -80,8 +80,8 @@ int main() {
         istream_iterator<string> begin(ss), end;
         vector<string> tokens(begin, end);
         if (tokens.size() == 2)
-            numbers[tokens[0].substr(0, 4)] = stoi(tokens[1]);
-        else if (tokens.size() == 4) {
+            values[tokens[0].substr(0, 4)] = stoi(tokens[1]);
+        else {
             monkey op({tokens[2][0], tokens[1], tokens[3]});
             monkeys[tokens[0].substr(0, 4)] = op;
             parents[tokens[1]] = tokens[0].substr(0, 4);

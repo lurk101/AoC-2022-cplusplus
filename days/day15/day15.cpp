@@ -58,10 +58,6 @@ int part1(vector<string> lines) {
 
 #define MAX_VAL 4000000
 
-int64_t max(int64_t a, int64_t b) { return a > b ? a : b; }
-
-int64_t min(int64_t a, int64_t b) { return a < b ? a : b; }
-
 int64_t part2(vector<string> lines) {
     vector<sensor_s> sensors;
     for (auto& line : lines) {
@@ -78,7 +74,8 @@ int64_t part2(vector<string> lines) {
             int64_t diff_y = abs(sensor.y - cur_y), dist_left = sensor.dist - diff_y;
             if (dist_left < 0)
                 continue;
-            intvl_s intvl = {max(sensor.x - dist_left, 0), min(sensor.x + dist_left, MAX_VAL)};
+            intvl_s intvl = {max(sensor.x - dist_left, int64_t(0)),
+                             min(sensor.x + dist_left, int64_t(MAX_VAL))};
             intvls.push_back(intvl);
         }
         sort(intvls.begin(), intvls.end());

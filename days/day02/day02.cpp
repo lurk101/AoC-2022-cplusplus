@@ -8,7 +8,7 @@
 using namespace std;
 using namespace chrono;
 
-static map<string, int> scores = {
+map<string, int> scores = {
     {"A X", 1 + 3}, // rock, rock, draw
     {"A Y", 2 + 6}, // rock, paper, win
     {"A Z", 3 + 0}, // rock, scissor, loss
@@ -20,11 +20,13 @@ static map<string, int> scores = {
     {"C Z", 3 + 3}, // scissor, scissor, draw
 };
 
-static map<char, char> win{{'A', 'Y'}, {'B', 'Z'}, {'C', 'X'}};
-static map<char, char> lose{{'A', 'Z'}, {'B', 'X'}, {'C', 'Y'}};
-static map<char, char> draw{{'A', 'X'}, {'B', 'Y'}, {'C', 'Z'}};
+map<char, char> win{{'A', 'Y'}, {'B', 'Z'}, {'C', 'X'}};
+map<char, char> lose{{'A', 'Z'}, {'B', 'X'}, {'C', 'Y'}};
+map<char, char> draw{{'A', 'X'}, {'B', 'Y'}, {'C', 'Z'}};
 
-static int round(string line, int part) {
+string line;
+
+int round(int part) {
     if (part == 2) {
         switch (line[2]) {
         case 'X': // lose
@@ -44,11 +46,10 @@ static int round(string line, int part) {
 int main() {
     auto start = high_resolution_clock::now();
     ifstream f("day02.txt");
-    string line;
     int score1 = 0, score2 = 0;
     while (getline(f, line)) {
-        score1 += round(line, 1);
-        score2 += round(line, 2);
+        score1 += round(1);
+        score2 += round(2);
     }
     cout << title << endl
          << "Part 1 - " << score1 << endl

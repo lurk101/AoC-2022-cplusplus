@@ -20,6 +20,7 @@ void rotate(char* cn, char c, int l) {
         cn[i] = cn[i + 1];
     cn[l - 1] = c;
 }
+
 int main() {
     auto start = high_resolution_clock::now();
     ifstream f("day06.txt");

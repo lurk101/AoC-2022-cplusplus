@@ -80,19 +80,19 @@ bool mov() {
             to_counts[proposed_move] = 1;
     }
     unordered_set<point, cantor_hash_fn> new_elves;
-    bool elves_moved = false;
+    bool moved = false;
     for (auto& e : elves) {
         auto& proposed_move = proposed[e];
         if (to_counts[proposed_move] == 1) {
             new_elves.insert(proposed_move);
             if (!(proposed_move == e))
-                elves_moved = true;
+                moved = true;
         } else
             new_elves.insert(e);
     }
     elves = new_elves;
     dir_ix = (dir_ix + 1) % 4;
-    return elves_moved;
+    return moved;
 }
 
 int main() {

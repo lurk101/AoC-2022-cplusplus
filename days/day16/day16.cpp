@@ -42,11 +42,10 @@ int main() {
         istream_iterator<string> begin(ss), end;
         vector<string> tokens(begin, end);
         string id(tokens[1]);
-        int rate(stoi(tokens[4].substr(5)));
         vector<string> to;
         for (int i = 9; i < tokens.size(); ++i)
             to.push_back(tokens[i].substr(0, 2));
-        volcano[id] = make_pair(rate, to);
+        volcano[id] = make_pair(stoi(tokens[4].substr(5)), to);
     }
     int n = int(volcano.size());
     map<string, int> map_index;

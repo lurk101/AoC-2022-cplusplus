@@ -12,25 +12,26 @@
 using namespace std;
 using namespace chrono;
 
-const array<set<pair<int, int>>, 5> blocks = {
-    {                                          //
-     {{3, 3}, {4, 3}, {5, 3}, {6, 3}},         //
-     {{4, 5}, {3, 4}, {4, 4}, {5, 4}, {4, 3}}, //
-     {{3, 3}, {4, 3}, {5, 3}, {5, 4}, {5, 5}}, //
-     {{3, 3}, {3, 4}, {3, 5}, {3, 6}},         //
-     {{3, 3}, {4, 3}, {3, 4}, {4, 4}}}         //
+// clang-format off
+const set<pair<int, int>> blocks[5] = { 
+     {{3, 3}, {4, 3}, {5, 3}, {6, 3}},
+     {{4, 5}, {3, 4}, {4, 4}, {5, 4}, {4, 3}},
+     {{3, 3}, {4, 3}, {5, 3}, {5, 4}, {5, 5}},
+     {{3, 3}, {3, 4}, {3, 5}, {3, 6}},
+     {{3, 3}, {4, 3}, {3, 4}, {4, 4}}
 };
+// clang-format on
 
-set<pair<int, int>> operator+(const set<pair<int, int>>& block, int py) {
+set<pair<int, int>> operator+(const set<pair<int, int>>& block, int dy) {
     set<pair<int, int>> new_block;
     for (const auto& p : block) {
         const auto& [x, y] = p;
-        new_block.insert(pair<int, int>{x, (y + py)});
+        new_block.insert(pair<int, int>{x, (y + dy)});
     }
     return new_block;
 }
 
-set<pair<int, int>> puff(set<pair<int, int>> block, bool left) {
+set<pair<int, int>> blow(set<pair<int, int>> block, bool left) {
     set<pair<int, int>> shoved;
     for (const auto& p : block) {
         const auto& [x, y] = p;
@@ -68,35 +69,36 @@ int main() {
     ifstream f{"day17.txt"};
     string gust_direction;
     getline(f, gust_direction);
-    vector<uint8_t> silo, detect;
+    vector<uint8_t> silo, cycle;
     uint64_t part1 = 0;
     int cycle_max = 10000;
-    uint64_t cycle_start = 0, cycle_period = 0;
+    uint64_t cycle_start = 0, cycle_offset = 0;
     uint64_t ds = 0, dy1 = 0, dy2 = 0;
     int gust_ix = 0;
-    auto block_ix = 0;
+    int block_ix = 0;
     uint64_t dropped = 0;
     while (dropped < (3 * cycle_max)) {
         if (dropped == 2022)
             part1 = silo.size();
         else if (dropped == (2 * cycle_max))
-            detect = silo;
+            cycle = silo;
         else if ((!cycle_start) && (dropped > (2 * cycle_max))) {
-            if (memcmp(&silo[silo.size() - cycle_max], &detect[detect.size() - cycle_max],
+            if (memcmp(&silo[silo.size() - cycle_max], &cycle[cycle.size() - cycle_max],
                        cycle_max * sizeof(uint8_t)) == 0) {
                 cycle_start = (dropped - (2 * cycle_max));
-                cycle_period = (1000000000000 % cycle_start);
+                cycle_offset = (1000000000000 % cycle_start);
+                cout << cycle_start << ' ' << cycle_offset << endl;
             }
-        } else if (cycle_start && (!dy1) && ((dropped % cycle_start) == cycle_period))
+        } else if (cycle_start && (!dy1) && ((dropped % cycle_start) == cycle_offset))
             dy1 = silo.size();
-        else if (cycle_start && dy1 && (!ds) && ((dropped % cycle_start) == cycle_period)) {
+        else if (cycle_start && dy1 && !ds && ((dropped % cycle_start) == cycle_offset)) {
             ds = dropped;
             dy2 = silo.size();
             break;
         }
         auto b1 = blocks[block_ix] + int(silo.size());
-        while (true) {
-            const auto b2 = puff(b1, gust_direction[gust_ix] == '<');
+        for (;;) {
+            const auto b2 = blow(b1, gust_direction[gust_ix] == '<');
             const auto b3 = fits(silo, b2) ? b2 : b1;
             const auto b4 = (b3 + (-1));
             if ((++gust_ix) == gust_direction.size())
@@ -107,8 +109,7 @@ int main() {
             } else
                 b1 = b4;
         }
-        if (++block_ix == blocks.size())
-            block_ix = 0;
+        block_ix = (block_ix + 1) % 5;
         ++dropped;
     }
     cout << title << endl

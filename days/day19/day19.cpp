@@ -8,23 +8,21 @@
 using namespace std;
 using namespace chrono;
 
-typedef uint32_t u32;
+const uint32_t Ore = 1 << 0, Clay = 1 << 8, Obsidian = 1 << 16, Geode = 1 << 24;
 
-const u32 Ore = 1 << 0, Clay = 1 << 8, Obsidian = 1 << 16, Geode = 1 << 24;
-
-u32 ore(u32 a) { return a & 0xff; }
-u32 clay(u32 a) { return (a >> 8) & 0xff; }
-u32 obsidian(u32 a) { return (a >> 16) & 0xff; }
-u32 geode(u32 a) { return (a >> 24) & 0xff; }
+uint32_t ore(uint32_t a) { return a & 0xff; }
+uint32_t clay(uint32_t a) { return (a >> 8) & 0xff; }
+uint32_t obsidian(uint32_t a) { return (a >> 16) & 0xff; }
+uint32_t geode(uint32_t a) { return (a >> 24) & 0xff; }
 
 struct blueprint {
-    u32 id, ore, clay, obsidian_ore, obsidian_clay, geode_ore, geode_clay;
+    uint32_t id, ore, clay, obsidian_ore, obsidian_clay, geode_ore, geode_clay;
 };
 
-u32 to_arrival(u32 need, u32 have) { return (need + have - 1) / have; }
+uint32_t to_arrival(uint32_t need, uint32_t have) { return (need + have - 1) / have; }
 
-u32 search(blueprint& bp, u32 assets, u32 bot, int t) {
-    u32 best = geode(assets + t * bot);
+uint32_t search(blueprint& bp, uint32_t assets, uint32_t bot, int t) {
+    uint32_t best = geode(assets + t * bot);
     if (ore(bot) < bp.clay || ore(bot) < bp.obsidian_ore || ore(bot) < bp.geode_ore) {
         int dt = 1 + (ore(assets) > bp.ore ? 0 : to_arrival(bp.ore - ore(assets), ore(bot)));
         if (t > dt)
@@ -36,11 +34,11 @@ u32 search(blueprint& bp, u32 assets, u32 bot, int t) {
             best = max(best, search(bp, assets + dt * bot - bp.clay * Ore, bot + Clay, t - dt));
     }
     if (clay(bot)) {
-        u32 ore_n =
+        uint32_t ore_n =
             ore(assets) > bp.obsidian_ore ? 0 : to_arrival(bp.obsidian_ore - ore(assets), ore(bot));
-        u32 clay_n = clay(assets) > bp.obsidian_clay
-                         ? 0
-                         : to_arrival(bp.obsidian_clay - clay(assets), clay(bot));
+        uint32_t clay_n = clay(assets) > bp.obsidian_clay
+                              ? 0
+                              : to_arrival(bp.obsidian_clay - clay(assets), clay(bot));
         int dt = 1 + max(ore_n, clay_n);
         if (t > dt)
             best =
@@ -79,10 +77,10 @@ int main(void) {
                      &bp.geode_clay);
         blueprints.push_back(bp);
     }
-    u32 part1 = 0, part2 = 1;
-    for (size_t i = 0; i < blueprints.size(); i++)
+    uint32_t part1 = 0, part2 = 1;
+    for (int i = 0; i < blueprints.size(); i++)
         part1 += blueprints[i].id * search(blueprints[i], 0, Ore, 24);
-    for (size_t i = 0; i < 3; i++)
+    for (int i = 0; i < 3; i++)
         part2 *= search(blueprints[i], 0, Ore, 32);
     cout << title << endl
          << "Part 1  - " << part1 << endl
