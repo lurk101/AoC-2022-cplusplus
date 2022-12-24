@@ -11,13 +11,12 @@ using namespace chrono;
 
 struct point {
     int x, y;
-    point(int X = 0, int Y = 0) : x(X), y(Y) {}
     bool operator<(const point& p) const {
         if (y == p.y)
             return x < p.x;
         return y < p.y;
     }
-    point operator+(const point& p) const { return point(x + p.x, y + p.y); }
+    point operator+(const point& p) const { return {x + p.x, y + p.y}; }
     bool operator==(const point& p) const { return x == p.x && y == p.y; }
 };
 
@@ -65,7 +64,7 @@ int traverse(point a, point b) {
         }
         sort(blizzards.begin(), blizzards.end());
         blizzards.erase(unique(blizzards.begin(), blizzards.end()), blizzards.end());
-        for (point p : points)
+        for (point& p : points)
             for (const point& d : directions) {
                 point n = p + d;
                 if ((bounds.inside(n) || n == start || n == target) &&
