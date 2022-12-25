@@ -36,3 +36,4 @@
 | Day 22: Monkey Map                  | 5.227 ms.   | 8.91 ms.    | 9.517 ms.   | 10.546 ms.  |
 | Day 23: Unstable Diffusion          | 1542.43 ms. | 3009.03 ms. | 3219.14 ms. | 4179.72 ms. |
 | Day 24: Blizzard Basin              | 291.489 ms. | 485.095 ms. | 486.049 ms. | 658.942 ms. |
+| Day 25: Full of Hot Air             | 0.199 ms.   | 0.274 ms.   | 0.217 ms.   | 0.154 ms.   |
