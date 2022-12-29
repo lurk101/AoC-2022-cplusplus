@@ -87,7 +87,6 @@ int main() {
                        cycle_max * sizeof(uint8_t)) == 0) {
                 cycle_start = (dropped - (2 * cycle_max));
                 cycle_offset = (1000000000000 % cycle_start);
-                cout << cycle_start << ' ' << cycle_offset << endl;
             }
         } else if (cycle_start && (!dy1) && ((dropped % cycle_start) == cycle_offset))
             dy1 = silo.size();
