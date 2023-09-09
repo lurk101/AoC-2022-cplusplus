@@ -84,8 +84,7 @@ int main() {
             start = {0, int(line.find('.'))};
             max_y = int(line.size()) - 1;
         } else
-            for (int i = 1, x = max_x - 1; i < line.size() - 1; ++i)
-                switch (line[i]) {
+            for (int i = 1, x = max_x - 1; i < line.size() - 1; ++i) switch (line[i]) {
                 case '>':
                     right_blizzards.push_back({x, i});
                     break;

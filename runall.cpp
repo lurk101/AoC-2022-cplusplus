@@ -16,10 +16,8 @@ float run_once(bool display) {
     char out[256];
     float elapsed;
     while (fgets(out, sizeof(out), fp) != NULL) {
-        if (!strncmp(out, "Elapsed - ", 10))
-            elapsed = strtof(out + 10, NULL);
-        if (display)
-            cout << out;
+        if (!strncmp(out, "Elapsed - ", 10)) elapsed = strtof(out + 10, NULL);
+        if (display) cout << out;
     }
     pclose(fp);
     return elapsed;
@@ -29,8 +27,7 @@ float run_many(void) {
     float best = run_once(true);
     int repeats = 0, limit = 10;
     for (;;) {
-        if (++repeats > limit)
-            break;
+        if (++repeats > limit) break;
         float e = run_once(false);
         if (e < best) {
             best = e;
@@ -65,16 +62,13 @@ int main(int ac, char** av) {
     smatch m;
     for (const auto& entry : directory_iterator(path)) {
         string p(entry.path());
-        if (regex_search(p, m, e))
-            paths.push_back(p.substr(2));
+        if (regex_search(p, m, e)) paths.push_back(p.substr(2));
     }
     paths.sort();
     cout << "Runnung:";
-    for (auto& p : paths)
-        cout << ' ' << p;
+    for (auto& p : paths) cout << ' ' << p;
     cout << endl;
-    for (auto& p : paths)
-        run_test(p);
+    for (auto& p : paths) run_test(p);
     ofstream o(av[1]);
     int i = 0;
     float total = 0;
