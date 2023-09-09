@@ -20,7 +20,7 @@ int main() {
             getline(f, l);
             break;
         }
-        int len = l.length();
+        int len = int(l.length());
         for (int i = 1; i < 10; ++i) {
             if (((i * 4) - 3) >= len) break;
             char c = l[(static_cast<std::basic_string<char, std::char_traits<char>,

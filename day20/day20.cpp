@@ -13,9 +13,9 @@ static int mod(int64_t a, int b) { return (a % b + b) % b; }
 
 static void shuffle(vector<pair<int64_t, int>>& num, int n) {
     for (int i = 0; i < n; ++i) {
-        int j = find_if(num.begin(), num.end(),
-                        [=](const pair<int64_t, int>& t) { return t.second == i; }) -
-                num.begin();
+        int j = int(find_if(num.begin(), num.end(),
+                            [=](const pair<int64_t, int>& t) { return t.second == i; }) -
+                    num.begin());
         int64_t val = num[j].first;
         num.erase(num.begin() + j);
         j = mod(j + val, n - 1);
@@ -23,10 +23,10 @@ static void shuffle(vector<pair<int64_t, int>>& num, int n) {
     }
 }
 
-static auto find_0(vector<pair<int64_t, int>>& num, int n) {
+static int find_0(vector<pair<int64_t, int>>& num, int n) {
     auto z =
         find_if(num.begin(), num.end(), [=](const pair<int64_t, int>& t) { return t.first == 0; });
-    return z - num.begin();
+    return int(z - num.begin());
 }
 
 static auto sum(vector<pair<int64_t, int>>& num, int n, int z) {

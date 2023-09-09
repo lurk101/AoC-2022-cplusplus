@@ -10,7 +10,7 @@ using namespace chrono;
 static int toprio(char c) { return c > 'Z' ? c - 'a' + 1 : c - 'A' + 27; }
 
 static auto part1(string& line) {
-    int n = line.size(), h = n / 2;
+    int n = int(line.size()), h = n / 2;
     for (int i = 0; i < h; ++i)
         for (int j = h; j < n; ++j)
             if (line[i] == line[j]) return toprio(line[i]);

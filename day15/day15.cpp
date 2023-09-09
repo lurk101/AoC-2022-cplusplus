@@ -56,7 +56,7 @@ static void part1(void) {
             cur_intvl = intvl;
         }
     }
-    p1 = count + cur_intvl.r - cur_intvl.l;
+    p1 = int(count + cur_intvl.r - cur_intvl.l);
 }
 
 #define MAX_VAL 4000000

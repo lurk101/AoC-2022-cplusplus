@@ -43,7 +43,7 @@ int main() {
         for (int i = 9; i < tokens.size(); ++i) to.push_back(tokens[i].substr(0, 2));
         valves[id] = make_pair(stoi(tokens[4].substr(5)), to);
     }
-    int n = valves.size();
+    int n = int(valves.size());
     map<string, int> map_index;
     vector<string> map_order;
     int with_flow = 0;
