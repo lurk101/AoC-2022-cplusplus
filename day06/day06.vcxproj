@@ -129,6 +129,12 @@
   <ItemGroup>
     <ClCompile Include="day06.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="day06.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="day6.md" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
