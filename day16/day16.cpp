@@ -17,15 +17,15 @@ static vector<vector<int16_t>> to;
 
 static int search(int p, int used, int time, bool elephants) {
     if (time == 0) return elephants ? search(0, used, 26, !elephants) : 0;
-    auto key = (((used * flow.size() + p) * 31 + time) * 2) + (elephants ? 1 : 0);
-    if (total_flow[key] >= 0) return total_flow[key];
+    auto ix = (((used * int(flow.size()) + p) * 31 + time) * 2) + (elephants ? 1 : 0);
+    if (total_flow[ix] >= 0) return total_flow[ix];
     int part = 0;
     if (!(used & (1ULL << p)) && flow[p]) {
         int new_used = used | (1ULL << p);
         part = max(part, (time - 1) * flow[p] + search(p, new_used, time - 1, elephants));
     }
     for (auto& to : to[p]) part = max(part, search(to, used, time - 1, elephants));
-    total_flow[key] = part;
+    total_flow[ix] = part;
     return part;
 }
 
