@@ -66,12 +66,12 @@ static auto drop_sand(int part) {
             cave[sand.x].insert(sand.y);
             break;
         }
-        if (cave[sand.x].find(sand.y + 1) == cave[sand.x].end())
+        if (!cave[sand.x].contains(sand.y + 1))
             sand.y++;
-        else if (cave[sand.x - 1].find(sand.y + 1) == cave[sand.x - 1].end()) {
+        else if (!cave[sand.x - 1].contains(sand.y + 1)) {
             sand.y++;
             sand.x--;
-        } else if (cave[sand.x + 1].find(sand.y + 1) == cave[sand.x + 1].end()) {
+        } else if (!cave[sand.x + 1].contains(sand.y + 1)) {
             sand.y++;
             sand.x++;
         } else {
