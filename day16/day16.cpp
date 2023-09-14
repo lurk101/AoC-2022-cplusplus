@@ -17,7 +17,7 @@ static vector<vector<int16_t>> to;
 
 static int search(int p, int used, int time, bool elephants) {
     if (time == 0) return elephants ? search(0, used, 26, !elephants) : 0;
-    auto key = used * (flow.size() * 31 * 2) + (p * 31 * 2) + (time * 2) + (elephants ? 1 : 0);
+    auto key = (((used * flow.size() + p) * 31 + time) * 2) + (elephants ? 1 : 0);
     if (total_flow[key] >= 0) return total_flow[key];
     int part = 0;
     if (!(used & (1ULL << p)) && flow[p]) {
@@ -43,7 +43,7 @@ int main() {
         for (int i = 9; i < tokens.size(); ++i) to.push_back(tokens[i].substr(0, 2));
         valves[id] = make_pair(stoi(tokens[4].substr(5)), to);
     }
-    int n = int(valves.size());
+    int n(int(valves.size()));
     map<string, int> map_index;
     vector<string> map_order;
     int with_flow = 0;
