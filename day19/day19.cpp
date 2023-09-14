@@ -1,6 +1,7 @@
 #define title "--- Day 19: Not Enough Minerals ---"
 #include <chrono>
 #include <fstream>
+#include <future>
 #include <iostream>
 #include <string>
 #include <thread>
@@ -63,9 +64,8 @@ static uint32_t search(blueprint& bp, uint32_t assets, uint32_t bot, int t) {
 }
 
 static vector<blueprint> blueprints;
-static uint32_t part2[3];
 
-static void prt2(int bp_ix) { part2[bp_ix] = search(blueprints[bp_ix], 0, Ore, 32); }
+static int prt2(int bp_ix) { return search(blueprints[bp_ix], 0, Ore, 32); }
 
 int main(void) {
     auto strt = high_resolution_clock::now();
@@ -82,15 +82,15 @@ int main(void) {
                      &bp.geode_clay);
         blueprints.push_back(bp);
     }
+    auto f1 = async(launch::async, prt2, 0);
+    auto f2 = async(launch::async, prt2, 1);
+    auto f3 = async(launch::async, prt2, 2);
     uint32_t part1 = 0;
     for (int i = 0; i < blueprints.size(); i++)
         part1 += blueprints[i].id * search(blueprints[i], 0, Ore, 24);
-    thread t[3];
-    for (int i = 0; i < 3; i++) t[i] = thread(prt2, i);
-    for (int i = 0; i < 3; i++) t[i].join();
     cout << title << endl
          << "Part 1  - " << part1 << endl
-         << "Part 2  - " << part2[0] * part2[1] * part2[2] << endl
+         << "Part 2  - " << f1.get() * f2.get() * f3.get() << endl
          << "Elapsed - "
          << duration_cast<microseconds>(high_resolution_clock::now() - strt).count() / 1.0e3
          << " ms." << endl;
