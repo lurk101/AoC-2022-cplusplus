@@ -24,10 +24,10 @@ float run_once(bool display) {
 }
 
 float run_many(void) {
-    float best = run_once(true);
-    int repeats = 0, limit = 10;
-    for (;;) {
-        if (++repeats > limit) break;
+    const int limit = 8;
+    int repeats;
+    float best;
+    for (best = run_once(true), repeats = 0; repeats < limit; ++repeats) {
         float e = run_once(false);
         if (e < best) {
             best = e;
