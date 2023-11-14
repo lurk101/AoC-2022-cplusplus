@@ -45,11 +45,11 @@ list<float> results;
 
 void run_test(string& path) {
     string mtune;
-    if (hostname == "opi5" || hostname == "rock5b")
+    if ((hostname == "opi5") || (hostname == "rock5b"))
         mtune = "-mtune=cortex-a76";
     else if (hostname == "pi4b")
         mtune = "-mtune=cortex-a72";
-    cout << endl << "Compiling " << path << endl;
+    cout << endl << "Compiling " << path << " " << mtune << endl;
     copy_file(path + "/" + path + ".cpp", path + ".cpp", copy_options::overwrite_existing);
     copy_file(path + "/" + path + ".txt", path + ".txt", copy_options::overwrite_existing);
     system(("g++ -O3 -std=c++20 " + mtune + " " + path + ".cpp -lpthread").c_str());
