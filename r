@@ -10,6 +10,9 @@ for cpu in `ls $SYS_PATH | grep 'cpu[0-9]\+'`; do
 		echo -n $GOVERNOR | sudo tee -a $CPU_SCALING_GOVERNOR > /dev/null
 	fi
 done
+if [ ! -f runall ]; then
+    g++ -O3 runall.cpp -o runall
+fi
 TS=""
 MT=""
 if [ "$HOSTNAME" = "opi5" ]; then
