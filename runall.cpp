@@ -47,6 +47,7 @@ void run_test(string& path) {
     cout << endl << "Compiling " << path << endl;
     copy_file(path + "/" + path + ".cpp", path + ".cpp", copy_options::overwrite_existing);
     copy_file(path + "/" + path + ".txt", path + ".txt", copy_options::overwrite_existing);
+    stringstream ss;
     ss << "g++ -O3 -std=c++20 " << path << ".cpp -lpthread";
     //cout << ss.str() << endl;
     system(ss.str().c_str());
